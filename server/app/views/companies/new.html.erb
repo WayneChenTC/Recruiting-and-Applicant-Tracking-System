@@ -1,0 +1,50 @@
+<h1> New Company </h1>
+
+
+<%= form_with scope: :company, url: companies_path do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :website %><br>
+    <%= form.text_field :website %>
+  </p>
+
+  <p>
+    <%= form.label :headquarters %><br>
+    <%= form.text_field :headquarters %>
+  </p>
+
+  <p>
+    <%= form.label :size %><br>
+    <%= form.text_field :size %>
+  </p>
+
+  <p>
+    <%= form.label :founded %><br>
+    <%= form.text_field :founded %>
+  </p>
+
+  <p>
+    <%= form.label :industry %><br>
+    <%= form.text_field :industry %>
+  </p>
+
+  <p>
+    <%= form.label :revenue %><br>
+    <%= form.text_field :revenue %>
+  </p>
+
+  <p>
+    <%= form.label :synopsis %><br>
+    <%= form.text_area :synopsis %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', companies_path %>
