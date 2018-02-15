@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213050706) do
+ActiveRecord::Schema.define(version: 20180215053917) do
 
   create_table "applications", force: :cascade do |t|
-    t.integer "app_id"
-    t.integer "user_id"
+    t.integer "applicant_id"
+    t.string "user_id"
     t.string "cur_company"
     t.string "linkedin_url"
     t.string "portfolio_url"

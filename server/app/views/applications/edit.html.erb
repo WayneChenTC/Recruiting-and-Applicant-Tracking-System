@@ -1,6 +1,4 @@
-<h1>Editing Application</h1>
-
-<%= render 'form', application: @application %>
-
-<%= link_to 'Show', @application %> |
-<%= link_to 'Back', applications_path %>
+<%= form_for @application do |f| %>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= f.submit "Update" %>
+<% end %>

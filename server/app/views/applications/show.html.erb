@@ -1,4 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%= "ID:" %>
+<%= @application.applicant_id %><br/>
+<%= "User ID:" %>
+<%= @application.user_id %><br/>
+<%= "Current Company:" %>
+<%= @application.cur_company %><br/>
+<%= "Linkedin URL:" %>
+<%= @application.linkedin_url %><br/>
+<%= "Portfolio URL:" %>
+<%= @application.portfolio_url %><br/>
+<%= "Additional Information:" %>
+<%= @application.add_info %><br/>
+<%= "Gender:" %>
+<%= @application.gender %><br/>
+<%= "Race:" %>
+<%= @application.race %><br/>
+<%= "Veteran Status:" %>
+<%= @application.veteran_stat %><br/>
+<%= "Disability Status:" %>
+<%= @application.disability_stat %><br/>
 
-<%= link_to 'Edit', edit_application_path(@application) %> |
-<%= link_to 'Back', applications_path %>
+
+<p><%= link_to 'Back to index', applications_path %></p>

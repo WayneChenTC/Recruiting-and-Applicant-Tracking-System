@@ -1,40 +1,43 @@
 class ApplicationsController < ApplicationController
+    before_action :set_application, :only => [:show, :edit, :update, :destroy]
     def new
         @application = Application.new
     end
     def create
         @application = Application.new(application_params)
-        @application.save
-
-        redirect_to :action => :index
+        if @application.save
+            redirect_to applications_url
+        else  
+            render :action => :new
+        end    
     end
     def index
-        @applications = Application.all
+        @applications = Application.page(params[:page]).per(5)
     end
     def show
-        @application = Application.find(params[:id])
     end
     def edit
-        @application = Application.find(params[:id])
     end
     def update 
-        @application = Application.find(params[:id])
-        @application.update(event_params)
-
-        redirect_to :action => :show, :id => @application
+        if @application.update(application_params)
+            redirect_to application_url(@application)
+        else 
+            render :action => :edit
+        end
     end
     def destroy
-        @application = Application.find(params[:id])
         @application.destroy
 
-        redirect_to :action => :index
+        redirect_to applications_url
     end
-    def upload
-    end
+  
     
     private
     
     def application_params
-        params.require(:event).permit(:app_id, :user_id, :cur_company, :linkedin_url, :portfolio_url, :add_info, :gender, :race, :veteran_stat, :disability_stat)
+        params.require(:application).permit(:applicant_id, :user_id, :cur_company, :linkedin_url, :portfolio_url, :add_info, :gender, :race, :veteran_stat, :disability_stat)
+    end
+    def set_application
+        @application = Application.find(params[:id])
     end
 end

@@ -1,17 +1,41 @@
-<%= form_with(model: application, local: true) do |form| %>
-  <% if application.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(application.errors.count, "error") %> prohibited this application from being saved:</h2>
-
+<%- # print error message when saving fails -%>
+    <% if @application.errors.any? %>
       <ul>
-      <% application.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
-    </div>
-  <% end %>
+    <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%- # extract common template of new.html.erb & edit.html.erb to share with them instead of writing same code in them.-%>
+    <%= f.label :applicant_id, "ID" %>
+    <%= f.text_field :applicant_id %>
+
+    <%= f.label :user_id, "User ID" %>
+    <%= f.text_field :user_id %>
+
+    <%= f.label :cur_company, "Current Company" %>
+    <%= f.text_field :cur_company %>
+
+    <%= f.label :linkedin_url, "Linkedin URL" %>
+    <%= f.text_field :linkedin_url %>
+
+    <%= f.label :portfolio_url, "Portfolio URL" %>
+    <%= f.text_field :portfolio_url %>
+
+    <%= f.label :add_info, "Additional Information" %>
+    <%= f.text_field :add_info %>
+
+    <%= f.label :gender, "Gender" %>
+    <%= f.text_field :gender %>
+
+    <%= f.label :race, "Race" %>
+    <%= f.text_field :race %>
+
+    <%= f.label :veteran_stat, "Veteran Status" %>
+    <%= f.text_field :veteran_stat %>
+
+    <%= f.label :disability_stat, "Disability Status" %>
+    <%= f.text_field :disability_stat %>
+
+    
