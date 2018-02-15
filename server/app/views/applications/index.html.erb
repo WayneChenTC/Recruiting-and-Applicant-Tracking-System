@@ -1,0 +1,13 @@
+<ul>
+<% @applications.each do |application| %>
+  <li>
+ 	  <%= application.user_id %>
+      <%= link_to 'Show', application_path(application) %>  
+      <%= link_to 'Edit', edit_application_path(application) %>  
+      <%= button_to 'Delete', application_path(application), :method => :delete, :data => {:confirm => "Are you sure?"} %>  </li>
+<% end %>
+</ul>
+<%= paginate @applications %>
+<%= link_to 'New Application', new_application_path %>
+
+
