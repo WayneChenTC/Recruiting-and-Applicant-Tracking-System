@@ -11,7 +11,6 @@ class CreateApplications < ActiveRecord::Migration[5.1]
       t.string :race
       t.string :veteran_stat
       t.string :disability_stat
-
       t.timestamps
     end
   end
