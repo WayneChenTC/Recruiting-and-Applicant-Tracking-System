@@ -1,19 +1,19 @@
 class CompaniesController < ApplicationController
 
   def index
-    if !logged_in?
-      redirect_to login_path
-    else
+    #if !logged_in?
+    #  redirect_to login_path
+    #else
       @companies = Company.all
-    end
+    #end
   end
 
   def show
-    if !logged_in?
-      redirect_to login_path
-    else
+    #if !logged_in?
+    #  redirect_to login_path
+    #else
       @company = Company.find(params[:id])
-    end
+    #end
 
   end
 
@@ -21,14 +21,14 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    if !logged_in?
-      redirect_to login_path
-    else
+    #if !logged_in?
+    #  redirect_to login_path
+    #else
       @company = Company.new(company_params)
 
       @company.save
       redirect_to @company
-    end
+    #end
 
   end
 

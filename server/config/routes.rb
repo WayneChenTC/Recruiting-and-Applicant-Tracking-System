@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-  resources :companies
+  resources :companies do
+    resources :jobs
+  end
   resources :users
   resources :applications
 
