@@ -10,30 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180217182129) do
-
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "website"
-    t.string "headquarters"
-    t.string "size"
-    t.string "founded"
-    t.string "industry"
-    t.string "revenue"
-    t.text "synopsis"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "password"
-    t.string "email"
-    t.string "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-  end
+ActiveRecord::Schema.define(version: 20180218153422) do
 
   create_table "applications", force: :cascade do |t|
     t.integer "applicant_id"
@@ -49,4 +26,38 @@ ActiveRecord::Schema.define(version: 20180217182129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "website"
+    t.string "headquarters"
+    t.string "size"
+    t.string "founded"
+    t.string "industry"
+    t.string "revenue"
+    t.text "synopsis"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer "company_id"
+    t.string "job_description"
+    t.string "employment_type"
+    t.string "responsibilities"
+    t.string "requirements"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "password"
+    t.string "email"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+  end
+
 end

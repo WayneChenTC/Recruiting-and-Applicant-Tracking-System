@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :companies
+  resources :companies do
+    resources :jobs
+  end
   resources :users
 
 
