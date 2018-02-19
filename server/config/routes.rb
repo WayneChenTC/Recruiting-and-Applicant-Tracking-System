@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :applications
 
+  resources :user_applications
+  resources :company_applications
   get 'sessions/new'
 
   get 'home/index'
@@ -10,8 +11,13 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :companies
-  resources :users
+  resources :companies do
+    resources :applications, :controller => 'company_applications'
+  end
+  resources :users do
+    resources :applications, :controller => 'user_applications'
+  end
+
 
 
   root 'home#index'

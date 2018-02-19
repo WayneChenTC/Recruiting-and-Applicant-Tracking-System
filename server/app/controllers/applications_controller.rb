@@ -35,7 +35,7 @@ class ApplicationsController < ApplicationController
     private
     
     def application_params
-        params.require(:application).permit(:applicant_id, :user_id, :cur_company, :linkedin_url, :portfolio_url, :add_info, :gender, :race, :veteran_stat, :disability_stat)
+        params.require(:application).permit(:applicant_id, :user_id_not_key, :cur_company, :linkedin_url, :portfolio_url, :add_info, :gender, :race, :veteran_stat, :disability_stat)
     end
     def set_application
         @application = Application.find(params[:id])

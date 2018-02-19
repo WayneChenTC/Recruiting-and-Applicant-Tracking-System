@@ -23,6 +23,7 @@
       <td><%= company.revenue %></td>
       <td><%= company.synopsis %></td>
       <td><%= link_to 'Show', company_path(company) %></td>
+      <td><%= link_to 'applications', company_applications_path(company) %></td>
     </tr>
   <% end %>
 </table>

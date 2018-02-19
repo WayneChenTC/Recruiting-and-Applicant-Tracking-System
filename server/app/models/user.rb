@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :applications, :optional => true
+    has_many :applications, :dependent => :destroy
   before_save { self.email = email.downcase }
   validates :role,  presence: true, length: { maximum: 50 }
   validates :password,  presence: true, length: { maximum: 50 }
