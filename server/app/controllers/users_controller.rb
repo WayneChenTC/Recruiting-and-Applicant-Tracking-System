@@ -4,13 +4,11 @@ class UsersController < ApplicationController
  end
 
   def create
-    if !logged_in?
-      redirect_to login_path
-    else
+      # allow for creating users without being logged in.
       @user = User.new(user_params)
       @user.save
       redirect_to @user
-    end
+
 
   end
 
