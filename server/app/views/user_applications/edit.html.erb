@@ -1,0 +1,4 @@
+<%= form_for @application, :url => user_application_path(@user, @application), :html => { :method => :patch } do |f| %>
+   <%= f.text_field :name %>
+   <%= f.submit %>
+<% end %>
