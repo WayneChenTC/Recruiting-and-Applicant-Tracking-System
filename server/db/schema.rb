@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218153422) do
+ActiveRecord::Schema.define(version: 20180221062513) do
 
   create_table "applications", force: :cascade do |t|
-    t.integer "applicant_id"
-    t.string "user_id_not_key"
     t.string "cur_company"
     t.string "linkedin_url"
     t.string "portfolio_url"
@@ -25,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180218153422) do
     t.string "disability_stat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "company_id"
+    t.integer "job_id"
     t.integer "user_id"
   end
 
@@ -42,13 +40,7 @@ ActiveRecord::Schema.define(version: 20180218153422) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "company_applications", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_applications", force: :cascade do |t|
+  create_table "job_applications", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,6 +55,12 @@ ActiveRecord::Schema.define(version: 20180218153422) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_jobs_on_company_id"
+  end
+
+  create_table "user_applications", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,14 @@
+<ul>
+<% @applications.each do |application| %>
+	<li>
+	  <%= application.name %>
+	  <%= link_to 'show', job_application_path(@job, application) %>
+	  <%= link_to 'edit', edit_job_application_path(@job, application) %>
+	  <%= link_to 'destroy', job_application_path(@job, application),
+	                            :method => :delete %>
+	</li>
+<% end %>
+
+</ul>
+
+	  <%= link_to 'new application', new_job_application_path(@job) %>
