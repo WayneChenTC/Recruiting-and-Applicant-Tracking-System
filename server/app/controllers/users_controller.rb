@@ -31,6 +31,20 @@ class UsersController < ApplicationController
 
  end
 
+ def destroy
+   if logged_in? and current_user.role == 'admin'
+
+
+     User.find(params[:id]).destroy
+     respond_to do |format|
+       format.html { redirect_to users_path,
+                                 notice: 'User was successfully destroyed.' }
+       format.json { head :no_content }
+     end
+
+   end
+ end
+
   private
   def user_params
     params.require(:user).permit(:email, :password, :role)
