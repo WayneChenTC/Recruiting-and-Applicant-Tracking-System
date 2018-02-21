@@ -35,11 +35,15 @@ class UsersController < ApplicationController
    if logged_in? and current_user.role == 'admin'
 
 
-     User.find(params[:id]).destroy
-     respond_to do |format|
-       format.html { redirect_to users_path,
-                                 notice: 'User was successfully destroyed.' }
-       format.json { head :no_content }
+     @user = User.find(params[:id])
+     if @user.role != 'admin'
+       @user.destroy
+       respond_to do |format|
+         format.html { redirect_to users_path,
+                                   notice: 'User was successfully destroyed.' }
+         format.json { head :no_content }
+       end
+
      end
 
    end
