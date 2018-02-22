@@ -26,4 +26,8 @@
 </p>
 
 <%= link_to 'Back', company_jobs_path %>
-<%= link_to 'Edit', edit_company_job_path(@job.company, @job) %> |
+
+<% if current_user.role == 'admin' or current_user.role == 'recruiter' %>
+  <%= link_to 'Edit', edit_company_job_path(@job.company, @job) %>
+<% end %>
+
