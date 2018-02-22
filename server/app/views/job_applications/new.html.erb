@@ -1,4 +1,28 @@
-<%= form_for @application, :url => job_applications_path(@job) do |f| %>
-   <%= f.text_field :name %>
-   <%= f.submit %>
+<%= form_for @application, :url => company_job_applications_path(@job.company, @job) do |f| %>
+    <%= f.label :cur_company, "Current Company" %>
+    <%= f.text_field :cur_company %>
+
+    <%= f.label :linkedin_url, "Linkedin URL" %>
+    <%= f.text_field :linkedin_url %>
+
+    <%= f.label :portfolio_url, "Portfolio URL" %>
+    <%= f.text_field :portfolio_url %>
+
+    <%= f.label :add_info, "Additional Information" %>
+    <%= f.text_field :add_info %>
+
+    <%= f.label :gender, "Gender" %>
+    <%= f.text_field :gender %>
+
+    <%= f.label :race, "Race" %>
+    <%= f.text_field :race %>
+
+    <%= f.label :veteran_stat, "Veteran Status" %>
+    <%= f.text_field :veteran_stat %>
+
+    <%= f.label :disability_stat, "Disability Status" %>
+    <%= f.text_field :disability_stat %>
+
+    <%= f.submit "Create" %>
+
 <% end %>
