@@ -8,6 +8,9 @@
   <%= @user.role %>
 </p>
 
-
+<% if current_user.role == 'admin' %>
+  <%= link_to 'Destroy', user_path(@user),
+                  method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 
 <%= link_to 'Back', users_path %>

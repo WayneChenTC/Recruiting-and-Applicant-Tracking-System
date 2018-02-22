@@ -20,8 +20,22 @@ class CompaniesController < ApplicationController
   def new
   end
 
+  def destroy
+    if logged_in? and current_user.role == 'admin'
+
+
+    Company.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to companies_path,
+                                notice: 'Company was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+
+    end
+  end
+
   def create
-    if !logged_in?
+    if !logged_in? and current_user.role == 'admin'
       redirect_to login_path
     else
       @company = Company.new(company_params)
@@ -29,6 +43,7 @@ class CompaniesController < ApplicationController
       @company.save
       redirect_to @company
     end
+
 
   end
 
