@@ -1,17 +1,24 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for @user, html: { multipart: true } do |f| %>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <p>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </p>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <p>
+    <%= f.label :role %><br>
+    <%= f.text_field :role %>
+  </p>
+ 
+  <p>
+    <%= f.label :document %><br>  
+    <%= f.file_field :document %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+
+  <%= link_to 'Back',users_path %>  
 <% end %>

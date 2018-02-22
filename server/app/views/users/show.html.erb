@@ -8,6 +8,11 @@
   <%= @user.role %>
 </p>
 
+<p>
+  <strong>Document:</strong>
+<%= image_tag @user.document.url %>  
+</p>
+
 <% if current_user.role == 'admin' %>
   <%= link_to 'Destroy', user_path(@user),
                   method: :delete, data: { confirm: 'Are you sure?' } %>
