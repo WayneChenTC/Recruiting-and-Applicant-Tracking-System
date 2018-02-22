@@ -1,24 +1,27 @@
 
-<%= form_with scope: :user, url: users_path, local: true do |form| %>
+<%= form_for @user, html: { multipart: true } do |f| %>
 
   <p>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
   </p>
 
   <p>
-    <%= form.label :password %><br>
-    <%= form.text_field :password %>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
   </p>
 
   <p>
-    <%= form.label :role %><br>
-    <%= form.text_field :role %>
+    <%= f.label :role %><br>
+    <%= f.text_field :role %>
   </p>
 
   <p>
-    <%= form.submit %>
-  </p>
+    <%= f.label :document %><br>  
+    <%= f.file_field :document %>
+ </p>
+
+  <p><%= f.submit "Submit" %></p>
 
   <%= link_to 'Back',users_path %>
 

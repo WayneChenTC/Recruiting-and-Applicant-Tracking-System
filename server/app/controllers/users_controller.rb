@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
  def new
-
+    @user = User.new
  end
 
   def create
       # allow for creating users without being logged in.
       @user = User.new(user_params)
+      #@user.document = params[:user][:document]      
       @user.save
       redirect_to @user
 
@@ -51,6 +52,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :role)
+    params.require(:user).permit(:email, :password, :role, :document)
   end
 end
