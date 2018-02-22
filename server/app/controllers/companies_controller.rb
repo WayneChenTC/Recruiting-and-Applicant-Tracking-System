@@ -18,30 +18,39 @@ class CompaniesController < ApplicationController
   end
 
   def new
+    if !logged_in? or current_user.role != 'admin'
+      redirect_to login_path
+    end
   end
 
   def destroy
     if logged_in? and current_user.role == 'admin'
 
+      Company.find(params[:id]).destroy
+      respond_to do |format|
+        format.html { redirect_to companies_path,
+                                  notice: 'Company was successfully destroyed.' }
+        format.json { head :no_content }
 
-    Company.find(params[:id]).destroy
-    respond_to do |format|
-      format.html { redirect_to companies_path,
-                                notice: 'Company was successfully destroyed.' }
-      format.json { head :no_content }
+      end
+
+    else
+      redirect_to login_path
     end
 
-    end
   end
 
   def create
-    if !logged_in? and current_user.role == 'admin'
+    if !logged_in? or current_user.role != 'admin'
       redirect_to login_path
     else
       @company = Company.new(company_params)
 
-      @company.save
-      redirect_to @company
+      if @company.save
+        redirect_to @company
+      else
+        render :action => :new
+      end
     end
 
 

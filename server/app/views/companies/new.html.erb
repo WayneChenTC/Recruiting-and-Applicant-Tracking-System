@@ -19,7 +19,7 @@
 
   <p>
     <%= form.label :size %><br>
-    <%= form.text_field :size %>
+    <%= form.select :size, [ '1-50', '51-200', '201-500', '501-1000', '1000+' ] %>
   </p>
 
   <p>
