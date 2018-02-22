@@ -15,8 +15,9 @@ class JobApplicationsController < ApplicationController
 
     def create
       @application = @job.applications.build( application_params )
+      @application.user_id = current_user.id
       if @application.save
-        redirect_to job_applications_url( @job )
+          redirect_to company_job_applications_url(@job.company, @job )
       else
         render :action => :new
       end
@@ -30,7 +31,7 @@ class JobApplicationsController < ApplicationController
       @application = @job.applications.find( params[:id] )
 
       if @application.update( application_params )
-        redirect_to job_applications_url( @job )
+          redirect_to company_job_applications_url( @job.company, @job )
       else
         render :action => :edit
       end
@@ -41,7 +42,7 @@ class JobApplicationsController < ApplicationController
       @application = @job.applications.find( params[:id] )
       @application.destroy
 
-      redirect_to job_applications_url( @job )
+      redirect_to company_job_applications_url( @job.company, @job )
     end
 
     protected
@@ -51,6 +52,6 @@ class JobApplicationsController < ApplicationController
     end
 
     def application_params
-        params.require(:application).permit(:name)
+        params.require(:application).permit(:cur_company, :linkedin_url, :portfolio_url, :add_info, :gender, :race, :veteran_stat, :disability_stat)
     end
 end

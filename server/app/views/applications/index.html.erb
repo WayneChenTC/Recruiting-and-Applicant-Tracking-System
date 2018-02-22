@@ -1,7 +1,7 @@
 <ul>
 <% @applications.each do |application| %>
   <li>
- 	  <%= application.user_id_not_key %>
+      <%= User.find(params[:user_id]).name %>
       <%= link_to 'Show', application_path(application) %>  
       <%= link_to 'Edit', edit_application_path(application) %>  
       <%= button_to 'Delete', application_path(application), :method => :delete, :data => {:confirm => "Are you sure?"} %>  </li>
