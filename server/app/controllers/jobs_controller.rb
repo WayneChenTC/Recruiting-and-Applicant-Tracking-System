@@ -24,6 +24,7 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+    if logged_in? and (current_user.role == 'admin' or current_user.role == 'recruiter')
     @job = Job.new(job_params)
     @job.company = Company.find(params[:company_id])
 
@@ -37,11 +38,13 @@ class JobsController < ApplicationController
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
+      end
   end
 
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
+    if logged_in? and (current_user.role == 'admin' or current_user.role == 'recruiter')
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to company_job_path(@job.company, @job),
@@ -52,17 +55,20 @@ class JobsController < ApplicationController
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
+      end
   end
 
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
+    if logged_in? and (current_user.role == 'admin' or current_user.role == 'recruiter')
     @job.destroy
     respond_to do |format|
       format.html { redirect_to company_jobs_path,
                     notice: 'Job was successfully destroyed.' }
       format.json { head :no_content }
     end
+      end
   end
 
   private
