@@ -26,7 +26,7 @@
         <td><%= link_to 'Edit', edit_company_job_path(job.company, job) %></td>
         <td><%= link_to 'Destroy', company_job_path(job.company, job),
             method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'applications', job_applications_path(job) %></td>
+        <td><%= link_to 'Applications', company_job_applications_path(job.company, job) %></td>
       </tr>
     <% end %>
   </tbody>

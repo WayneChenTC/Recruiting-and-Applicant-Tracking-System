@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221062513) do
+ActiveRecord::Schema.define(version: 20180222022627) do
 
   create_table "applications", force: :cascade do |t|
     t.string "cur_company"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20180221062513) do
     t.datetime "updated_at", null: false
     t.integer "job_id"
     t.integer "user_id"
+    t.index ["job_id"], name: "index_applications_on_job_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -40,12 +42,6 @@ ActiveRecord::Schema.define(version: 20180221062513) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "job_applications", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "jobs", force: :cascade do |t|
     t.integer "company_id"
     t.string "job_description"
@@ -57,12 +53,6 @@ ActiveRecord::Schema.define(version: 20180221062513) do
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
-  create_table "user_applications", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "password"
     t.string "email"
@@ -70,6 +60,10 @@ ActiveRecord::Schema.define(version: 20180221062513) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "document_file_name"
+    t.string "document_content_type"
+    t.integer "document_file_size"
+    t.datetime "document_updated_at"
   end
 
 end

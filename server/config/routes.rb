@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :job_applications
-  resources :user_applications
   get 'sessions/new'
 
   get 'home/index'
@@ -13,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :companies do
     resources :jobs do
-      resource :applications, :controller => 'job_applications'
+      resources :applications, :controller => 'job_applications'
     end
   end
   resources :users do

@@ -51,6 +51,6 @@ class UserApplicationsController < ApplicationController
     end
 
     def application_params
-        params.require(:application).permit(:name)
+        params.require(:application).permit(:cur_company, :linkedin_url, :portfolio_url, :add_info, :gender, :race, :veteran_stat, :disability_stat)
     end
 end
