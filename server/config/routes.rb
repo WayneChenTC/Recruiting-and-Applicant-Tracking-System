@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :user_jobs
   get 'sessions/new'
 
   get 'home/index'
