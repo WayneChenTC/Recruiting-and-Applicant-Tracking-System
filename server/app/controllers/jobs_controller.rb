@@ -27,7 +27,7 @@ class JobsController < ApplicationController
     if logged_in? and (current_user.role == 'admin' or current_user.role == 'recruiter')
     @job = Job.new(job_params)
     @job.company = Company.find(params[:company_id])
-
+    @job.user_id = current_user.id
     respond_to do |format|
       if @job.save
         format.html { redirect_to company_job_path(@job.company, @job),
@@ -38,7 +38,7 @@ class JobsController < ApplicationController
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
-      end
+    end
   end
 
   # PATCH/PUT /jobs/1
@@ -55,7 +55,7 @@ class JobsController < ApplicationController
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
-      end
+    end
   end
 
   # DELETE /jobs/1

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Jobs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @jobs.each do |job| %>
+	<li>
+	  <%= job.name %>
+	  <%= link_to 'show', user_job_path(@user, job) %>
+      <% if (current_user.role == 'admin') || (curren_user.role == 'recruiter' and current_user.email == @user.email)%>
+        <%= link_to 'Destroy', user_job_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Edit', edit_user_job_path(@user) %>
+      <% end %>
+    </li>
+<% end %>
+     </tbody>
+</table>
+
+<br>
+
+<p><%= link_to 'Back', users_path %></p>
+
+

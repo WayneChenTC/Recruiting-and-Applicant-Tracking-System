@@ -1,7 +1,10 @@
 <ul>
 <% @applications.each do |application| %>
-	<li>
-      <%= application.user.email %>
+    <li>
+        <strong>Application Status:</strong><br/>
+        <%= application.status %><br/>
+        <strong>Applicant Name:</strong><br/>
+        <%= application.user.name %><br/>
 	  <%= link_to 'show', company_job_application_path(@job.company, @job, application) %>
 	  <%= link_to 'edit', edit_company_job_application_path(@job.company, @job, application) %>
 	  <%= button_to 'Delete', company_job_application_path(@job.company, @job, application), :method => :delete, :data => {:confirm => "Are you sure?"} %>
