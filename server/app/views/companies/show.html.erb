@@ -45,7 +45,8 @@
 
   <%
   apps = Application.all.collect { |app|
-    res = Job.find(app.job_id).company_id == @company.id
+    res = Job.find(app.job_id).company_id == @company.id and current_user.company_id == @company.id
+
     if res
       app
     end
