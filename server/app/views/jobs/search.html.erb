@@ -1,0 +1,20 @@
+<h1>Search Jobs</h1>
+<p>
+<%= form_tag(jobsearch_path, method: :get) do %>
+  <%= text_field_tag :terms, params[:terms] %>
+  <%= submit_tag 'Search' %>
+<% end %>
+</p>
+
+<table>
+  <th> Jobs </th>
+  <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td> <%= job.job_description %> </td>
+          <td> <%= link_to 'View', company_job_path(job.company, job) %> </td>
+
+        </tr>
+      <% end %>
+  </tbosy>
+</table>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  get    '/jobsearch', to: 'jobs#search'
+
   resources :companies do
     resources :jobs do
       resources :applications, :controller => 'job_applications'
