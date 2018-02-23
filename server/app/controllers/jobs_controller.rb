@@ -62,13 +62,24 @@ class JobsController < ApplicationController
   # DELETE /jobs/1.json
   def destroy
     if logged_in? and (current_user.role == 'admin' or current_user.role == 'recruiter')
-    @job.destroy
-    respond_to do |format|
-      format.html { redirect_to company_jobs_path,
-                    notice: 'Job was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      @job.destroy
+      respond_to do |format|
+        format.html { redirect_to company_jobs_path,
+                      notice: 'Job was successfully destroyed.' }
+        format.json { head :no_content }
       end
+    end
+  end
+
+  def search
+    if params[:terms] and params[:terms] != ""
+      @jobs = Job.joins('INNER JOIN companies ON jobs.company_id = companies.id').
+                  where('companies.name LIKE ? OR companies.industry LIKE ? OR companies.size LIKE ? OR companies.headquarters LIKE ?',
+                     params[:terms], params[:terms], params[:terms], params[:terms])
+
+    else
+      @jobs = Job.all
+    end
   end
 
   private
@@ -80,6 +91,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:company, :job_description, :employment_type, :responsibilities, :requirements)
+      params.require(:job).permit(:company, :job_description, :employment_type, :responsibilities, :requirements, :terms)
     end
 end
