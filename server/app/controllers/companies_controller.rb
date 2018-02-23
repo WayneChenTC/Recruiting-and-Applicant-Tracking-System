@@ -18,8 +18,11 @@ class CompaniesController < ApplicationController
   end
 
   def new
-    if !logged_in? or current_user.role != 'admin'
+    if !logged_in?
       redirect_to login_path
+    end
+    if current_user.role != 'admin'
+      redirect_to companies_path
     end
   end
 
