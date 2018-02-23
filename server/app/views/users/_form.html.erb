@@ -16,14 +16,22 @@
 
   <p>
     <%= f.label :role %><br>
-    <%= f.text_field :role %>
+    <%= f.select :role, ["job-seeker","recruiter","admin"] %>
   </p>
- 
+
   <p>
-    <%= f.label :document %><br>  
+    <%= f.label :company_id, "Company" %>
+    <%= f.select :company_id,
+                            Company.all.collect { |c| [c.name, c.id] },
+                            { include_blank: true } %>
+  </p>
+
+  <p>
+    <%= f.label :document %><br>
     <%= f.file_field :document %>
   </p>
+
   <p><%= f.submit "Submit" %></p>
 
-  <%= link_to 'Back',users_path %>  
+  <%= link_to 'Back',users_path %>
 <% end %>

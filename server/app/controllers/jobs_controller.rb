@@ -14,7 +14,14 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
-    @job = Job.new
+    if !logged_in?
+      redirect_to login_path
+    end
+    if current_user.role == 'recruiter' and current_user.company_id == params[:company_id]
+      @job = Job.new
+    else
+      redirect_to company_jobs_path(params[:company_id])
+    end
   end
 
   # GET /jobs/1/edit

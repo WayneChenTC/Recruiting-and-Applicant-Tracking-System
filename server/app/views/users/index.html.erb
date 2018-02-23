@@ -7,13 +7,15 @@
   </tr>
 
   <% @users.each do |user| %>
-    <tr>
-      <td><%= user.email %></td>
-      <td><%= user.role %></td>
+    <% if current_user.role == 'admin' or user.id == current_user.id %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
 
       <td><%= link_to 'Show', user_path(user) %></td>
       <td><%= link_to 'Applications', user_applications_path(user)%></td>
     </tr>
+    <% end %>
   <% end %>
 </table>
 <br>
