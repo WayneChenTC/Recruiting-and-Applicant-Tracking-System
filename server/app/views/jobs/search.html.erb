@@ -9,7 +9,7 @@
 <table>
   <th> Jobs </th>
   <tbody>
-      <%= @jobs.each do |job| %>
+      <% @jobs.each do |job| %>
         <tr>
           <td> <%= job.job_description %> </td>
           <td> <%= link_to 'View', company_job_path(job.company, job) %> </td>
