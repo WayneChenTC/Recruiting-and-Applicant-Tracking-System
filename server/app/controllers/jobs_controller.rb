@@ -17,7 +17,7 @@ class JobsController < ApplicationController
     if !logged_in?
       redirect_to login_path
     end
-    if current_user.role == 'recruiter' and current_user.company_id == params[:company_id]
+    if current_user.role == 'recruiter' and current_user.company_id == params[:company_id].to_i
       @job = Job.new
     else
       redirect_to company_jobs_path(params[:company_id])
