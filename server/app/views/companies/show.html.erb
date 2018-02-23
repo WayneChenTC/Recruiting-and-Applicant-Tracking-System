@@ -40,3 +40,33 @@
 
 <%= link_to 'Back', companies_path %>
 <%= link_to 'Jobs', company_jobs_path(@company) %>
+
+<% if current_user.role == 'recruiter' %>
+
+  <%
+  apps = Application.all.collect { |app|
+    res = Job.find(app.job_id).company_id == @company.id
+    if res
+      app
+    end
+  }
+  %>
+  <h1> Welcome Recruiter </h1>
+  <h1> Applications for <%= @company.name %> </h1>
+  <table>
+    <tr>
+      <th> Applicant Name</th>
+    </tr>
+    <% apps.each do |app| %>
+      <% if !app.nil? %>
+      <tr>
+        <td> <%= User.find(app.user_id).name %> </td>
+        <td> <%= link_to 'View', company_job_application_path(@company, Job.find(app.job_id), app) %> </td>
+      </tr>
+      <% end %>
+    <% end %>
+
+
+  </table>
+
+<% end %>
