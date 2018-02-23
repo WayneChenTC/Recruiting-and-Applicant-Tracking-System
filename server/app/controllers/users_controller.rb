@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def create
     # allow for creating users without being logged in.
     @user = User.new(user_params)
-    #@user.document = params[:user][:document]
     @user.save
     redirect_to @user
 
@@ -31,7 +30,10 @@ class UsersController < ApplicationController
 
 
   end
-
+  
+  def edit
+    @user = User.find(params[:id])      
+  end
 
   def update
     @user = User.find(params[:id])
