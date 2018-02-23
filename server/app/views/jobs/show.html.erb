@@ -27,7 +27,7 @@
 
 <%= link_to 'Back', company_jobs_path %>
 
-<% if current_user.role == 'admin' or current_user.role == 'recruiter' && current_user.email == @job.user.email%>
+<% if (current_user.role == 'admin') or (current_user.role == 'recruiter' and current_user.email == @job.user.email) %>
   <%= link_to 'Edit', edit_company_job_path(@job.company, @job) %>
 <% end %>
 
