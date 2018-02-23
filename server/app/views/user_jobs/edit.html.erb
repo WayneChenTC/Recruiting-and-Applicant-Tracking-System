@@ -1,6 +1,6 @@
 <h1>Editing Job</h1>
 
-<%= form_with(model: [@company, @job], url: company_job_path, local: true) do |form| %>
+<%= form_with(model: [@user, @job], url: user_job_path, local: true) do |form| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -14,7 +14,7 @@
   <% end %>
 
   <div class="title">
-    <h1><%= Company.find(params[:company_id]).name %>
+    <h1><%= Company.find(params[:user_id]).name %>
 
   </div>
 
@@ -41,8 +41,8 @@
   <div class="actions">
     <%= form.submit "Update" %>
   </div>
+<% end %>
 
-  <% end %>
+<%= link_to 'Show', user_job_path(@job.user, @job) %> |
+<%= link_to 'Back', user_jobs_path %>
 
-<%= link_to 'Show', company_job_path(@job.company, @job) %> |
-<%= link_to 'Back', company_jobs_path %>

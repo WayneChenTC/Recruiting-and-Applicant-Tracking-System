@@ -1,6 +1,9 @@
 <ul>
 <% @applications.each do |application| %>
-	<li>
+    <li>
+        <strong>Application Status:</strong><br/>
+        <%= application.status %><br/>
+         <strong>Company:</strong><br/>
         <%= application.job.company.name %><br/>        
         <%= application.job.job_description %><br/>
         <%= application.job.employment_type %><br/>

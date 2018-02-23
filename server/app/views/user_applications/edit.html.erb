@@ -1,4 +1,10 @@
 <%= form_for @application, :url => user_application_path(@user, @application), :html => { :method => :patch } do |f| %>
+<% if (current_user.role == 'recruiter' and current_user.email == @user.email) or (current_user.role == 'admin')%>    
+    <p>
+    <%= f.label :status %><br>
+    <%= f.select :status, [ 'document received', 'in process', 'hired', 'not selected' ] %>
+  </p>
+  <% end %>
     <%= f.label :cur_company, "Current Company" %>
     <%= f.text_field :cur_company %>
 

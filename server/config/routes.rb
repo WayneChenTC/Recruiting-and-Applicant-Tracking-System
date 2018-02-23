@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users do
+    resources :jobs, :controller => 'user_jobs' 
     resources :applications, :controller => 'user_applications'
   end
 

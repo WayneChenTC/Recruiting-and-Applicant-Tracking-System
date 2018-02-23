@@ -1,4 +1,9 @@
 <p>
+<strong>Name:</strong>
+  <%= @user.name %>
+  </p>
+
+<p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
@@ -9,13 +14,8 @@
 </p>
 
 <p>
-
 <strong>Document:</strong><br/>
-<%= image_tag @user.document.url %>  
-
-  <strong>Name:</strong>
-  <%= @user.name %>
-
+<%= image_tag @user.document.url %>   
 </p>
 
 <% if current_user.role == 'admin' %>
