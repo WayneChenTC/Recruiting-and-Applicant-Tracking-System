@@ -2,7 +2,9 @@
 
 <%= link_to 'Company List', controller: 'companies' %>
 <br>
+<% if (current_user.role == 'recruiter' or current_user.role == 'admin') %>
 <%= link_to 'New Company', new_company_path %>
+  <% end %>
 <br>
 
 <%= link_to 'User List', controller: 'users' %>

@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
     if !logged_in?
       redirect_to login_path
     end
-    if current_user.role != 'admin'
+    if (current_user.role != 'admin' and current_user.role != 'recruiter')
       redirect_to companies_path
     end
   end
@@ -44,7 +44,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    if !logged_in? or current_user.role != 'admin'
+    if !logged_in? or (current_user.role != 'admin' and current_user.role != 'recruiter')
       redirect_to login_path
     else
       @company = Company.new(company_params)
@@ -52,6 +52,7 @@ class CompaniesController < ApplicationController
       if @company.save
         redirect_to @company
       else
+        puts @company.errors.full_messages
         render :action => :new
       end
     end
@@ -60,8 +61,8 @@ class CompaniesController < ApplicationController
   end
 
   private
-    def company_params
-      params.require(:company).permit(:name, :website, :headquarters, :size,
-                                      :founded, :industry, :revenue, :synopsis)
-    end
+  def company_params
+    params.require(:company).permit(:name, :website, :headquarters, :size,
+                                    :founded, :industry, :revenue, :synopsis)
+  end
 end
