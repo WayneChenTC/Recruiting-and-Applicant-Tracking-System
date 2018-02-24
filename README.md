@@ -14,3 +14,8 @@ Rails Version: Rails 5.1.4
 ### 2/17/2018 - Finish most of assigned part
 
 ### 2/20/2018 - Finish any remaining part of assignment
+
+
+## Notes
+
+When uploading documents to the profile page you need to use the pdf format
