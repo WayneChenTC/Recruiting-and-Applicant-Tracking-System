@@ -11,7 +11,10 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </p>
-
+  
+  </p>
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
   <p>
     <%= f.label :password %><br>
     <%= f.text_field :password %>
@@ -31,7 +34,7 @@
 
 
    <p>
-    <%= f.label :document %><br>
+    <%= f.label :document, "Document (only PDF is allowed)" %><br>
     <%= f.file_field :document %>
  </p>
 
