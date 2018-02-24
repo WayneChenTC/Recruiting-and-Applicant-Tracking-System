@@ -9,7 +9,7 @@ Rails Version: Rails 5.1.4
 brentyounce.com:3000
 
 ## Email and Password of Admin
-Email: admin@gmail.com
+Email: admin@gmail.com,
 Password: password
 
 ## Notes
