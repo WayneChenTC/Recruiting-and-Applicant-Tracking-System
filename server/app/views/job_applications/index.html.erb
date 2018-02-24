@@ -1,13 +1,16 @@
 <ul>
 <% @applications.each do |application| %>
     <li>
-        <strong>Application Status:</strong><br/>
-        <%= application.status %><br/>
-        <strong>Applicant Name:</strong><br/>
-        <%= application.user.name %><br/>
-	  <%= link_to 'show', company_job_application_path(@job.company, @job, application) %>
-	  <%= link_to 'edit', edit_company_job_application_path(@job.company, @job, application) %>
-	  <%= button_to 'Delete', company_job_application_path(@job.company, @job, application), :method => :delete, :data => {:confirm => "Are you sure?"} %>
+        <% if current_user.role=='job-seeker' and application.user_id!=current_user.id%>    <% next %>
+        <%end%>
+            <strong>Application Status:</strong><br/>
+            <%= application.status %><br/>
+            <strong>Applicant Name:</strong><br/>
+            <%= application.user.name %><br/>
+	        <%= link_to 'show', company_job_application_path(@job.company, @job, application) %>
+	        <%= link_to 'edit', edit_company_job_application_path(@job.company, @job, application) %>
+            <%= button_to 'Delete', company_job_application_path(@job.company, @job, application), :method => :delete, :data => {:confirm => "Are you sure?"} %>
+    
 	</li>
 <% end %>
 
