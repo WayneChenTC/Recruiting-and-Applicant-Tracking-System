@@ -1,11 +1,12 @@
 <h1> Welcome to CSC517 P2 </h1>
 
-<%= link_to 'Company List', controller: 'companies' %>
+<%= link_to 'Companies & Jobs', controller: 'companies' %>
 <br>
 <% if (current_user.role == 'recruiter' or current_user.role == 'admin') %>
 <%= link_to 'New Company', new_company_path %>
   <% end %>
 <br><br>
+
 <%= link_to 'Profile', current_user %>
 <br>
 <%= link_to 'User List', controller: 'users' %>
