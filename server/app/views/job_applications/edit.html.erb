@@ -1,6 +1,6 @@
 <%= form_for @application, :url => company_job_application_path(@job.company, @job, @application), :html => { :method => :patch } do |f| %>
 
-<% if (current_user.role == 'recruiter' and current_user.email == @job.user.email) or (current_user.role == 'admin')%>    
+<% if (current_user.role == 'recruiter' and current_user.email == @job.user.email) or (current_user.role == 'admin')%>
     <p>
     <%= f.label :status %><br>
     <%= f.select :status, [ 'document received', 'in process', 'hired', 'not selected' ] %>
@@ -31,7 +31,9 @@
 
     <%= f.label :disability_stat, "Disability Status" %>
     <%= f.text_field :disability_stat %>
-
-    <%= f.submit "Create" %>
+    <br><br>
+    <%= f.submit "Save" %>
 
 <% end %>
+<br>
+<%= link_to 'Back', company_job_application_path(@job.company, @job, @application) %>

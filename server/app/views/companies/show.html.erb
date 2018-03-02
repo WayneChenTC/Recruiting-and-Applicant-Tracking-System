@@ -62,7 +62,7 @@
       <% if !app.nil? %>
       <tr>
         <td> <%= User.find(app.user_id).name %> </td>
-        <td> <%= link_to 'View', company_job_application_path(@company, Job.find(app.job_id), app) %> </td>
+        <td> <%= link_to 'View or Update Submittal Status', company_job_application_path(@company, Job.find(app.job_id), app) %> </td>
       </tr>
       <% end %>
     <% end %>

@@ -1,6 +1,6 @@
 <strong>Job Information:</strong><br/>
 <%= "Company:" %>
-<%= @job.company.name %><br/> 
+<%= @job.company.name %><br/>
 <%= "Description:" %>
 <%= @application.job.job_description %><br/>
 <%= "Employment Type:" %>
@@ -25,7 +25,7 @@
         <%= @application.status %><br/>
 
 <strong>Application Information:</strong><br/>
-  
+
 <%= "Current Company:" %>
 <%= @application.cur_company %><br/>
 <%= "Linkedin URL:" %>
@@ -45,5 +45,4 @@
 
 
 <p><%= link_to 'Back', company_job_applications_path(@job.company, @job) %></p>
-<p><%= link_to 'Edit', edit_company_job_application_path(@job.company, @job, @application) %></p>
-
+<p><%= link_to 'Edit or Update Submittal Status', edit_company_job_application_path(@job.company, @job, @application) %></p>
