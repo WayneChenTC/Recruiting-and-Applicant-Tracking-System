@@ -23,6 +23,10 @@
       <td><%= company.revenue %></td>
       <td><%= company.synopsis %></td>
       <td><%= link_to 'Details, Jobs, and Applications', company_path(company) %></td>
+      <% if current_user.role == 'admin' %>
+        <td><%= link_to 'Destroy', company_path(company),
+                       method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
 
     </tr>
   <% end %>
