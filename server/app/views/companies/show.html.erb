@@ -41,7 +41,7 @@
 <%= link_to 'Back', companies_path %>
 <%= link_to 'Jobs', company_jobs_path(@company) %>
 
-<% if current_user.role == 'recruiter' %>
+<% if current_user.role == 'recruiter' or current_user.role == 'admin'%>
 
   <%
   apps = Application.all.collect { |app|
