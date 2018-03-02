@@ -20,3 +20,5 @@ Password: password
 3. If a job seeker hasn't uploaded his/her document yet, the "Document" field of a profile will show a small question mark image.
 
 4. Whenever you create a company, an application, or an user. If you are unable to create it without completing all the fields on the form, try to leave something like 'N/A' in cells that you don't want to fill in. 
+
+5. To use the same email address for both a recruiter and a job seeker, simply log-in with your email address and choose your role on the Profile page. It will then default to logging you in as the same role until you switch it on that page. 
