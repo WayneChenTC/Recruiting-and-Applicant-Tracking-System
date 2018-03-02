@@ -1,7 +1,7 @@
 <ul>
 <% @applications.each do |application| %>
     <li>
-        <% if current_user.role=='job-seeker' and application.user_id!=current_user.id%>    <% next %>
+        <% if (current_user.role=='job-seeker' and application.user_id!=current_user.id) or current_user.role=='admin'%>    <% next %>
         <%end%>
             <strong>Application Status:</strong><br/>
             <%= application.status %><br/>
