@@ -13,7 +13,7 @@ Email: admin@gmail.com,
 Password: password
 
 ## If you log in as an admin
-1. To view the list of applications and detailed information, please go to 'User List' and then you can choose an user to view.
+To view the list of applications and detailed information, please go to 'User List' and then you can choose an user to view.
 
 ## Notes
 1. When uploading documents to a profile page you need to upload a PDF-format document.
