@@ -23,4 +23,6 @@ Password: password
 
 5. To use the same email address for both a recruiter and a job seeker, simply log-in with your email address and choose your role on the Profile page. It will then default to logging you in as the same role until you switch it on that page. 
 
-6. To see your own applications (if you are a job seeker), please go to 'User List' and click on the 'Applicaitons' button behind your account 
+6. To see your own applications (if you are a job seeker), please go to 'User List' and click on the 'Applicaitons' button behind your account.
+
+7. To simplify the job search functionality we made the search button check all important fields of the company (name, industry, size, or headquarters).
