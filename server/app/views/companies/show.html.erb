@@ -37,7 +37,9 @@
   <p><%= link_to 'Destroy', company_path(@company),
                   method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
-
+<% if current_user.role == 'recruiter' and current_user.company_id == @company.id %>
+    <%= link_to 'Edit', edit_company_path(@company) %>
+<% end %>
 <%= link_to 'Back', companies_path %>
 <%= link_to 'Jobs', company_jobs_path(@company) %>
 
