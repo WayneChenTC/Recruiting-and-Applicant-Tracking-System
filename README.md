@@ -18,7 +18,7 @@ To view the list of applications and detailed information, please go to 'User Li
 ## Notes
 1. When uploading documents to a profile page you need to upload a PDF-format document.
 
-2. If you are a recruiter, you can change job seekers’ submittal status by going to "Companies & Jobs  -> Details, Jobs, and Applications -> View -> edit". REMEMBER! You can ONLY change submittal status of applicaitons for the jobs you posted!!!
+2. If you are a recruiter, you can change job seekers’ submittal status by going to "Companies & Jobs  -> Details, Jobs, and Applications -> Jobs -> Applications -> Change Status". REMEMBER! You can ONLY change submittal status of applicaitons for the jobs you posted!!!
 
 3. If a job seeker hasn't uploaded his/her document yet, the "Document" field of a profile will show a small question mark image.
 
