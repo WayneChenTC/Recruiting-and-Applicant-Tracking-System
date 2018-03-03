@@ -21,13 +21,28 @@ class CompaniesController < ApplicationController
     if !logged_in?
       redirect_to login_path
     end
-    if (current_user.role != 'admin' and current_user.role != 'recruiter')
+    if (current_company.role != 'admin' and current_company.role != 'recruiter')
       redirect_to companies_path
     end
   end
 
+def edit
+    @company = Company.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:id])
+    if @company.update(company_params)
+      redirect_to company_path
+    else
+      puts @company.errors.full_messages
+      render 'edit', alert: "Oops! There was a problem, please try again"
+    end
+  end
+
+
   def destroy
-    if logged_in? and current_user.role == 'admin'
+    if logged_in? and current_company.role == 'admin'
 
       Company.find(params[:id]).destroy
       respond_to do |format|
@@ -44,7 +59,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    if !logged_in? or (current_user.role != 'admin' and current_user.role != 'recruiter')
+    if !logged_in? or (current_company.role != 'admin' and current_company.role != 'recruiter')
       redirect_to login_path
     else
       @company = Company.new(company_params)
